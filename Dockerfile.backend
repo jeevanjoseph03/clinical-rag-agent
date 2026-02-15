@@ -1,0 +1,21 @@
+# Use a lightweight Python image
+FROM python:3.10-slim
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy requirements and install them
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the server code and the database
+COPY server.py .
+COPY .env .
+# We will mount the qdrant_db folder via docker-compose instead of copying it
+# so you don't have to rebuild the image every time data changes.
+
+# Expose the port
+EXPOSE 8000
+
+# Command to run the app
+CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "8000"]

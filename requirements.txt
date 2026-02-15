@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+streamlit
+python-dotenv
+llama-index-core
+llama-index-llms-groq
+llama-index-embeddings-fastembed
+llama-index-vector-stores-qdrant
+qdrant-client
+requests
+fastembed
